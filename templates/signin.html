@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sign In
+{% endblock %}
+{% block style %}
+<style>
+  form{
+    margin-top: 50px;
+  }
+  h2{
+    background-color:#1B4C52;
+    margin-top: 20px;
+  }
+  p{
+    color: red;
+    background-color: #e9e9e9;
+    margin-left: 15%;
+    text-align: center;
+    width: 350px;
+    margin-top: 5px;
+  }
+</style>
+{% endblock %}
+
+{% block h2 %}
+Member Login
+{% endblock %}
+
+{% block content %}
+<form class="form" action='{{ url_for("signin") }}' method="post">
+  <div class="form_element">
+    <input class="form_input" type="text" name="username" placeholder="Username" >
+  </div>
+  <div class="form_element">
+    <input type="password" name="password" class="form_input" placeholder="Password">
+  </div>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+<a href="{{ url_for('register') }}">Not a member! Register</a>
+<button type="submit" name="signin" class="btn">Sign In</button>
+
+</form>
+{% endblock %}

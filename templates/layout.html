@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../static/style1.css">
+    {% block style %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_child">
+        <div class="text">
+          <h1>Welcome to R&R</h1>
+          <h2>{% block h2 %} {% endblock %}</h2>
+        </div>
+
+      </div>
+      <div class="container_child search">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+
+    </div>
+  </body>
+  </html>

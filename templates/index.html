@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+<style media="screen">
+
+.form_input{
+  padding: 10px;
+  border-radius: 6px;
+}
+ul{
+  list-style: None;
+}
+li{
+  background-color: white;
+  font-size: 25px;
+  width: 450px;
+  margin: auto;
+  border-radius: 6px;
+  border: solid red 2px;
+  text-align: center;
+}
+a{
+  text-decoration: None;
+  margin: auto;
+}
+p{
+  text-align: center;
+}
+.logout{
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 25px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  background-color: #ABA194;
+  color: black;
+}
+</style>
+{% endblock %}
+{% block h2 %}
+Logged in as {{ username }}
+{% endblock %}
+
+{% block content %}
+<form class="form" action="{{ url_for('index') }}" method="post">
+  <div class="form_element">
+    <input class="form_input"type="text" name="title" placeholder="Book Title">
+  </div>
+  <div class="form_element">
+    <input type="text" name="isbn" placeholder="ISBN NUMBER" class="form_input">
+  </div>
+  <div class="form_element">
+    <input type="text" name="author" placeholder="Author Name" class="form_input">
+  </div>
+  <div class="form_element">
+    <button type="submit" name="button" class="btn">Search</button>
+  </div>
+</form>
+{% if message %}
+<p>Results:</p>
+<ul>
+{% for title, isbn in books %}
+  <li><a href="{{ url_for('book',isbn = isbn) }}">{{ title }}</a></li>
+{% endfor %}
+
+</ul>
+{% endif %}
+<a href="{{ url_for('logout') }}" class="logout">Logout</a>
+{% endblock %}
